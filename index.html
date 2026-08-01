@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vaishnavi Acharya — Beauty, Tested Honestly</title>
+<meta name="description" content="Vaishnavi Acharya reviews skincare, makeup, haircare and fragrance — self-bought, honestly rated, no paid placements.">
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Jost:wght@300;400;500;600;700&display=swap');
+
+  :root{
+    --ivory:#FBF6F1;
+    --ivory-dim:#F3ECE4;
+    --blush:#F0C6C5;
+    --plum:#4A1942;
+    --gold:#C89B5C;
+    --berry:#8B2942;
+    --ink:#2B1B22;
+    --ink-soft: rgba(43,27,34,0.62);
+    --line: rgba(43,27,34,0.12);
+
+    --font-display: 'Fraunces', serif;
+    --font-body: 'Jost', sans-serif;
+
+    --container: 1140px;
+    --radius-lg: 26px;
+    --radius-md: 16px;
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+
+  html{ scroll-behavior:smooth; }
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    *{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important; }
+  }
+
+  body{
+    background:var(--ivory);
+    color:var(--ink);
+    font-family:var(--font-body);
+    font-weight:400;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+  a{ color:inherit; text-decoration:none; }
+  ul{ list-style:none; }
+  button{ font-family:inherit; cursor:pointer; }
+  img,svg{ display:block; max-width:100%; }
+
+  ::selection{ background:var(--berry); color:var(--ivory); }
+
+  :focus-visible{
+    outline: 2px solid var(--berry);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  .wrap{
+    max-width:var(--container);
+    margin:0 auto;
+    padding:0 clamp(20px,5vw,48px);
+  }
+
+  .eyebrow{
+    font-family:var(--font-body);
+    font-size:0.72rem;
+    font-weight:600;
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+    color:var(--berry);
+  }
+
+  /* ---------- NAV ---------- */
+  header.site-nav{
+    position:sticky;
+    top:0;
+    z-index:100;
+    background:rgba(251,246,241,0.86);
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:16px clamp(20px,5vw,48px);
+    max-width:var(--container);
+    margin:0 auto;
+  }
+  .monogram{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-family:var(--font-display);
+    font-weight:600;
+    font-size:1.05rem;
+    letter-spacing:0.01em;
+  }
+  .monogram-mark{
+    width:38px; height:38px;
+    border-radius: 63% 37% 54% 46% / 43% 37% 63% 57%;
+    background: linear-gradient(135deg, var(--berry), var(--plum));
+    display:flex; align-items:center; justify-content:center;
+    color:var(--ivory);
+    font-size:0.85rem;
+    font-weight:700;
+    flex-shrink:0;
+  }
+  nav.nav-links{ display:flex; gap:clamp(18px,3vw,34px); align-items:center; }
+  nav.nav-links a{
+    font-size:0.92rem;
+    font-weight:500;
+    color:var(--ink);
+    position:relative;
+    padding:4px 2px;
+  }
+  nav.nav-links a::after{
+    content:"";
+    position:absolute; left:0; right:100%; bottom:-2px;
+    height:2px; background:var(--berry);
+    transition:right 0.25s ease;
+  }
+  nav.nav-links a:hover::after{ right:0; }
+
+  .nav-cta{
+    background:var(--ink);
+    color:var(--ivory) !important;
+    padding:10px 20px;
+    border-radius:100px;
+    font-size:0.88rem;
+    font-weight:600;
+  }
+  .nav-cta:hover{ background:var(--berry); }
+  .nav-cta::after{ display:none; }
+
+  .burger{
+    display:none;
+    width:40px; height:40px;
+    border:none; background:none;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:5px;
+  }
+  .burger span{ width:22px; height:2px; background:var(--ink); border-radius:2px; transition:transform 0.25s ease, opacity 0.25s ease; }
+  .burger.open span:nth-child(1){ transform:translateY(7px) rotate(45deg); }
+  .burger.open span:nth-child(2){ opacity:0; }
+  .burger.open span:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    padding:clamp(64px,10vw,120px) 0 clamp(56px,8vw,96px);
+    overflow:hidden;
+  }
+  .hero-blob{
+    position:absolute;
+    border-radius:63% 37% 54% 46% / 43% 37% 63% 57%;
+    filter:blur(0.5px);
+    opacity:0.55;
+    z-index:0;
+  }
+  .hero-blob.b1{ width:340px; height:340px; background:var(--blush); top:-120px; right:-80px; }
+  .hero-blob.b2{ width:220px; height:220px; background:var(--gold); opacity:0.35; bottom:-60px; left:-60px; border-radius:37% 63% 46% 54% / 57% 43% 57% 43%; }
+
+  .hero-inner{ position:relative; z-index:1; max-width:780px; }
+
+  .hero h1{
+    font-family:var(--font-display);
+    font-weight:600;
+    font-size:clamp(2.6rem, 6vw, 4.4rem);
+    line-height:1.04;
+    letter-spacing:-0.01em;
+    color:var(--ink);
+  }
+  .hero h1 em{
+    font-style:italic;
+    font-weight:500;
+    color:var(--berry);
+  }
+
+  .hero-sub{
+    margin-top:22px;
+    font-size:clamp(1.05rem,1.6vw,1.25rem);
+    color:var(--ink-soft);
+    max-width:560px;
+  }
+  .rotate-word{
+    color:var(--plum);
+    font-weight:600;
+    border-bottom:3px solid var(--gold);
+    display:inline-block;
+  }
+
+  .hero-actions{
+    margin-top:36px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:16px;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:14px 26px;
+    border-radius:100px;
+    font-weight:600;
+    font-size:0.95rem;
+    border:1.5px solid var(--ink);
+    transition:transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+  }
+  .btn-primary{ background:var(--ink); color:var(--ivory); }
+  .btn-primary:hover{ background:var(--berry); border-color:var(--berry); transform:translateY(-2px); }
+  .btn-ghost{ background:transparent; color:var(--ink); }
+  .btn-ghost:hover{ background:var(--ink); color:var(--ivory); transform:translateY(-2px); }
+
+  .hero-stats{
+    margin-top:56px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:clamp(28px,5vw,56px);
+  }
+  .stat b{
+    display:block;
+    font-family:var(--font-display);
+    font-size:1.9rem;
+    font-weight:600;
+    color:var(--plum);
+  }
+  .stat span{
+    font-size:0.82rem;
+    color:var(--ink-soft);
+    letter-spacing:0.02em;
+  }
+
+  /* ---------- SECTION shared ---------- */
+  section{ padding:clamp(64px,9vw,104px) 0; }
+  .section-head{
+    max-width:640px;
+    margin-bottom:clamp(36px,6vw,56px);
+  }
+  .section-head h2{
+    font-family:var(--font-display);
+    font-weight:600;
+    font-size:clamp(1.9rem,4vw,2.7rem);
+    margin-top:10px;
+    letter-spacing:-0.01em;
+  }
+  .section-head p{
+    margin-top:14px;
+    color:var(--ink-soft);
+    font-size:1.02rem;
+  }
+
+  /* ---------- ABOUT ---------- */
+  .about{ background:var(--ivory-dim); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+  .about-grid{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:clamp(32px,6vw,72px);
+    align-items:center;
+  }
+  .about-visual{
+    position:relative;
+    aspect-ratio:1/1;
+    max-width:380px;
+  }
+  .swatch-ring{
+    position:absolute;
+    border-radius:63% 37% 54% 46% / 43% 37% 63% 57%;
+  }
+  .swatch-ring.s1{ width:100%; height:100%; background:linear-gradient(160deg, var(--blush), var(--gold)); top:0; left:0; }
+  .swatch-ring.s2{ width:62%; height:62%; background:var(--plum); border-radius:37% 63% 46% 54% / 57% 43% 57% 43%; top:20%; left:22%; mix-blend-mode:multiply; opacity:0.85; }
+  .swatch-ring.s3{ width:30%; height:30%; background:var(--ivory); border-radius:50%; top:38%; left:36%; display:flex; align-items:center; justify-content:center; font-family:var(--font-display); font-weight:600; color:var(--plum); font-size:1.5rem; }
+
+  .about-copy p{ color:var(--ink-soft); margin-top:16px; font-size:1.02rem; }
+  .about-copy p:first-of-type{ margin-top:18px; }
+
+  .policy-line{
+    margin-top:26px;
+    display:flex;
+    gap:12px;
+    align-items:flex-start;
+    padding:16px 18px;
+    background:var(--ivory);
+    border:1px solid var(--line);
+    border-radius:var(--radius-md);
+  }
+  .policy-dot{
+    width:10px; height:10px; border-radius:50%;
+    background:var(--berry);
+    margin-top:6px; flex-shrink:0;
+  }
+  .policy-line strong{ font-weight:600; }
+  .policy-line span{ color:var(--ink-soft); font-size:0.92rem; display:block; }
+
+  /* ---------- RATING GUIDE ---------- */
+  .guide-scale{
+    display:flex;
+    flex-wrap:wrap;
+    gap:clamp(10px,2vw,18px);
+  }
+  .guide-item{
+    flex:1 1 170px;
+    background:var(--ivory);
+    border:1px solid var(--line);
+    border-radius:var(--radius-md);
+    padding:22px 20px;
+  }
+  .smear-row{ display:flex; gap:6px; margin-bottom:16px; }
+  .smear{
+    width:22px; height:14px;
+    border-radius:60% 40% 55% 45% / 45% 55% 40% 60%;
+    background:var(--line);
+  }
+  .smear.on{ background:var(--berry); }
+  .guide-item h3{
+    font-family:var(--font-display);
+    font-size:1.15rem;
+    font-weight:600;
+  }
+  .guide-item p{
+    margin-top:6px;
+    font-size:0.88rem;
+    color:var(--ink-soft);
+  }
+
+  /* ---------- REVIEWS ---------- */
+  .filter-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-bottom:clamp(28px,4vw,40px);
+  }
+  .chip{
+    padding:9px 18px;
+    border-radius:100px;
+    border:1.5px solid var(--line);
+    font-size:0.88rem;
+    font-weight:500;
+    background:var(--ivory);
+    transition:all 0.2s ease;
+  }
+  .chip[aria-pressed="true"]{
+    background:var(--ink);
+    border-color:var(--ink);
+    color:var(--ivory);
+  }
+  .chip:hover{ border-color:var(--ink); }
+
+  .review-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:24px;
+  }
+  .review-card{
+    background:var(--ivory);
+    border:1px solid var(--line);
+    border-radius:var(--radius-lg);
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+    transition:transform 0.35s ease, opacity 0.35s ease, box-shadow 0.3s ease;
+  }
+  .review-card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 18px 40px -18px rgba(43,27,34,0.25);
+  }
+  .review-card.hide{
+    display:none;
+  }
+  .swatch-smear{
+    height:118px;
+    position:relative;
+    overflow:hidden;
+  }
+  .swatch-smear::before{
+    content:"";
+    position:absolute;
+    width:150%; height:150%;
+    left:-25%; top:-40%;
+    border-radius:63% 37% 54% 46% / 43% 37% 63% 57%;
+    background:var(--smear-color, var(--blush));
+  }
+  .swatch-smear::after{
+    content:"";
+    position:absolute; inset:0;
+    background:radial-gradient(circle at 30% 30%, rgba(255,255,255,0.35), transparent 60%);
+  }
+  .card-body{ padding:22px 22px 24px; display:flex; flex-direction:column; gap:10px; flex:1; }
+  .card-tag{
+    font-size:0.68rem;
+    font-weight:600;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--berry);
+  }
+  .card-brand{
+    font-size:0.78rem;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+  }
+  .card-title{
+    font-family:var(--font-display);
+    font-size:1.25rem;
+    font-weight:600;
+    line-height:1.25;
+  }
+  .card-verdict{
+    font-size:0.92rem;
+    color:var(--ink-soft);
+    line-height:1.55;
+    flex:1;
+  }
+  .card-foot{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-top:8px;
+    padding-top:14px;
+    border-top:1px dashed var(--line);
+    font-size:0.78rem;
+    color:var(--ink-soft);
+  }
+  .card-foot .smear-row{ margin-bottom:0; }
+  .card-foot .smear{ width:16px; height:10px; }
+
+  /* ---------- NEWSLETTER / CONTACT ---------- */
+  .contact{
+    background:var(--plum);
+    color:var(--ivory);
+    border-radius:32px;
+    max-width:var(--container);
+    margin:0 auto clamp(64px,9vw,104px);
+    padding:clamp(40px,6vw,64px);
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:clamp(32px,5vw,60px);
+    align-items:center;
+  }
+  .contact .eyebrow{ color:var(--gold); }
+  .contact h2{
+    font-family:var(--font-display);
+    font-size:clamp(1.8rem,3.6vw,2.4rem);
+    font-weight:600;
+    margin-top:10px;
+  }
+  .contact p{
+    margin-top:14px;
+    color:rgba(251,246,241,0.72);
+    max-width:420px;
+  }
+  form.contact-form{ display:flex; flex-direction:column; gap:14px; }
+  .contact-form input,
+  .contact-form textarea{
+    width:100%;
+    padding:14px 16px;
+    border-radius:12px;
+    border:1px solid rgba(251,246,241,0.25);
+    background:rgba(251,246,241,0.08);
+    color:var(--ivory);
+    font-family:var(--font-body);
+    font-size:0.95rem;
+    resize:vertical;
+  }
+  .contact-form input::placeholder,
+  .contact-form textarea::placeholder{ color:rgba(251,246,241,0.5); }
+  .contact-form textarea{ min-height:96px; }
+  .contact-form button{
+    align-self:flex-start;
+    background:var(--gold);
+    color:var(--ink);
+    border:none;
+    padding:13px 26px;
+    border-radius:100px;
+    font-weight:600;
+    font-size:0.95rem;
+    transition:transform 0.2s ease, background 0.2s ease;
+  }
+  .contact-form button:hover{ background:var(--ivory); transform:translateY(-2px); }
+  .form-note{ font-size:0.78rem; color:rgba(251,246,241,0.55); margin-top:4px; }
+
+  .contact-thanks{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:6px;
+    animation:fadeUp 0.5s ease;
+  }
+  .contact-thanks[hidden]{ display:none; }
+  .thanks-mark{
+    width:44px; height:44px;
+    border-radius:50%;
+    background:var(--gold);
+    color:var(--ink);
+    display:flex; align-items:center; justify-content:center;
+    font-size:1.2rem;
+    font-weight:700;
+    margin-bottom:8px;
+  }
+  .contact-thanks h3{
+    font-family:var(--font-display);
+    font-size:1.4rem;
+    font-weight:600;
+  }
+  .contact-thanks p{
+    color:rgba(251,246,241,0.72);
+    max-width:380px;
+    margin-top:0;
+  }
+  .btn-ghost-inv{
+    margin-top:14px;
+    background:transparent;
+    border:1.5px solid rgba(251,246,241,0.4);
+    color:var(--ivory);
+    padding:11px 22px;
+    border-radius:100px;
+    font-weight:600;
+    font-size:0.88rem;
+    transition:all 0.2s ease;
+  }
+  .btn-ghost-inv:hover{ background:var(--ivory); color:var(--ink); border-color:var(--ivory); }
+
+  @keyframes fadeUp{
+    from{ opacity:0; transform:translateY(10px); }
+    to{ opacity:1; transform:translateY(0); }
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    padding:36px 0 44px;
+    border-top:1px solid var(--line);
+  }
+  .footer-inner{
+    display:flex;
+    flex-wrap:wrap;
+    gap:16px;
+    justify-content:space-between;
+    align-items:center;
+  }
+  .footer-links{ display:flex; gap:22px; }
+  .footer-links a{ font-size:0.86rem; color:var(--ink-soft); }
+  .footer-links a:hover{ color:var(--berry); }
+  .footer-copy{ font-size:0.8rem; color:var(--ink-soft); }
+
+  /* ---------- reveal on scroll ---------- */
+  .reveal{ opacity:0; transform:translateY(18px); transition:opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:920px){
+    .about-grid{ grid-template-columns:1fr; }
+    .about-visual{ margin:0 auto; }
+    .review-grid{ grid-template-columns:repeat(2, 1fr); }
+    .contact{ grid-template-columns:1fr; }
+  }
+
+  @media (max-width:720px){
+    nav.nav-links{
+      position:fixed;
+      top:70px; left:0; right:0;
+      background:var(--ivory);
+      flex-direction:column;
+      align-items:flex-start;
+      padding:20px clamp(20px,5vw,48px) 28px;
+      border-bottom:1px solid var(--line);
+      transform:translateY(-130%);
+      opacity:0;
+      transition:transform 0.3s ease, opacity 0.3s ease;
+      gap:16px;
+    }
+    nav.nav-links.open{ transform:translateY(0); opacity:1; }
+    .burger{ display:flex; }
+    .hero-stats{ gap:28px; }
+    .review-grid{ grid-template-columns:1fr; }
+  }
+
+  @media (max-width:480px){
+    .hero h1{ font-size:2.2rem; }
+    .contact{ border-radius:22px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="nav-inner">
+    <a href="#top" class="monogram">
+      <span class="monogram-mark">VA</span>
+      Vaishnavi Acharya
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#about">About</a>
+      <a href="#guide">Rating Guide</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#contact" class="nav-cta">Get in touch</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="hero-blob b1"></div>
+    <div class="hero-blob b2"></div>
+    <div class="wrap hero-inner">
+      <p class="eyebrow">Product reviews, self-funded</p>
+      <h1>I use it up<br>before I <em>rate</em> it.</h1>
+      <p class="hero-sub">
+        Vaishnavi Acharya tests <span class="rotate-word" id="rotateWord">skincare</span> the way you actually would — daily, in bad bathroom lighting, until the bottle's empty. No press samples, no paid placements.
+      </p>
+      <div class="hero-actions">
+        <a href="#reviews" class="btn btn-primary">Browse reviews</a>
+        <a href="#guide" class="btn btn-ghost">How the rating works</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><b>6 yrs</b><span>reviewing publicly</span></div>
+        <div class="stat"><b>500+</b><span>products finished, not sampled</span></div>
+        <div class="stat"><b>0</b><span>paid placements, ever</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <div class="wrap about-grid">
+      <div class="about-visual reveal">
+        <div class="swatch-ring s1"></div>
+        <div class="swatch-ring s2"></div>
+        <div class="swatch-ring s3">VA</div>
+      </div>
+      <div class="about-copy reveal">
+        <p class="eyebrow">About</p>
+        <h2 style="font-family:var(--font-display); font-size:clamp(1.7rem,3.4vw,2.3rem); font-weight:600; margin-top:10px;">Every review is a product I bought or was gifted and actually finished.</h2>
+        <p>I started reviewing skincare because I couldn't tell which "holy grail" claims were real and which were just good lighting. Six years and a few hundred empty bottles later, the rule hasn't changed: if I haven't used it down to the last squeeze, it doesn't get rated.</p>
+        <p>I cover skincare, makeup, haircare and fragrance — mostly what's actually sitting on Indian shelves, at prices that matter, reviewed with the same routine every time.</p>
+        <div class="policy-line">
+          <div class="policy-dot"></div>
+          <div>
+            <strong>The honesty policy:</strong>
+            <span>No brand pays for placement or a rating. If something's sent to me for free, it's marked "gifted" — never "sponsored."</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="guide">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Rating Guide</p>
+        <h2>Five swatches, not five stars.</h2>
+        <p>Every product gets rated the way you'd judge a shade on your hand — by how much of it actually gets used. Here's what each swatch level means before you read a single review.</p>
+      </div>
+      <div class="guide-scale reveal">
+        <div class="guide-item">
+          <div class="smear-row">
+            <div class="smear on"></div><div class="smear"></div><div class="smear"></div><div class="smear"></div><div class="smear"></div>
+          </div>
+          <h3>Hard pass</h3>
+          <p>Sat half-used in a drawer. Wouldn't buy again or recommend.</p>
+        </div>
+        <div class="guide-item">
+          <div class="smear-row">
+            <div class="smear on"></div><div class="smear on"></div><div class="smear"></div><div class="smear"></div><div class="smear"></div>
+          </div>
+          <h3>Meh</h3>
+          <p>Did the bare minimum. Fine for the price, forgettable otherwise.</p>
+        </div>
+        <div class="guide-item">
+          <div class="smear-row">
+            <div class="smear on"></div><div class="smear on"></div><div class="smear on"></div><div class="smear"></div><div class="smear"></div>
+          </div>
+          <h3>It's fine</h3>
+          <p>Works as promised. Solid backup, not a first reach.</p>
+        </div>
+        <div class="guide-item">
+          <div class="smear-row">
+            <div class="smear on"></div><div class="smear on"></div><div class="smear on"></div><div class="smear on"></div><div class="smear"></div>
+          </div>
+          <h3>Repurchase</h3>
+          <p>Already reordered it. Would recommend without a big caveat.</p>
+        </div>
+        <div class="guide-item">
+          <div class="smear-row">
+            <div class="smear on"></div><div class="smear on"></div><div class="smear on"></div><div class="smear on"></div><div class="smear on"></div>
+          </div>
+          <h3>Holy grail</h3>
+          <p>Rebought more than once. Recommended to actual friends and family.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="reviews" style="background:var(--ivory-dim); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Latest Reviews</p>
+        <h2>Fresh off the vanity table.</h2>
+        <p>Filter by category, or scroll through everything currently in rotation.</p>
+      </div>
+
+      <div class="filter-row reveal" id="filterRow">
+        <button class="chip" data-filter="all" aria-pressed="true">All</button>
+        <button class="chip" data-filter="skincare" aria-pressed="false">Skincare</button>
+        <button class="chip" data-filter="makeup" aria-pressed="false">Makeup</button>
+        <button class="chip" data-filter="haircare" aria-pressed="false">Haircare</button>
+        <button class="chip" data-filter="fragrance" aria-pressed="false">Fragrance</button>
+      </div>
+
+      <div class="review-grid" id="reviewGrid">
+
+        <article class="review-card reveal" data-category="skincare">
+          <div class="swatch-smear" style="--smear-color:#E7B7A4"></div>
+          <div class="card-body">
+            <span class="card-tag">Skincare</span>
+            <span class="card-brand">Glow Lab</span>
+            <h3 class="card-title">Vitamin C Brightening Serum</h3>
+            <p class="card-verdict">Lightweight, layers well under makeup, and there's a real glow by week two. The only miss: the citrus scent lingers longer than I'd like.</p>
+            <div class="card-foot">
+              <span>Repurchased: Yes</span>
+              <div class="smear-row"><div class="smear on"></div><div class="smear on"></div><div class="smear on"></div><div class="smear on"></div><div class="smear"></div></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="review-card reveal" data-category="makeup">
+          <div class="swatch-smear" style="--smear-color:#C0546B"></div>
+          <div class="card-body">
+            <span class="card-tag">Makeup</span>
+            <span class="card-brand">Petal &amp; Co.</span>
+            <h3 class="card-title">Silk Matte Lipstick — Terracotta Hour</h3>
+            <p class="card-verdict">The lipstick I keep repurchasing. Doesn't feather, survives chai and gossip, and the shade genuinely suits every skin tone I've tested it on.</p>
+            <div class="card-foot">
+              <span>Repurchased: Yes</span>
+              <div class="smear-row"><div class="smear on"></div><div class="smear on"></div><div class="smear on"></div><div class="smear on"></div><div class="smear on"></div></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="review-card reveal" data-category="haircare">
+          <div class="swatch-smear" style="--smear-color:#8A6A3E"></div>
+          <div class="card-body">
+            <span class="card-tag">Haircare</span>
+            <span class="card-brand">Rooted Rituals</span>
+            <h3 class="card-title">Onion &amp; Amla Hair Oil</h3>
+            <p class="card-verdict">Great for a scalp massage night, but it's heavy — budget for a double shampoo or you'll be wearing it the next day, not your hair.</p>
+            <div class="card-foot">
+              <span>Repurchased: No</span>
+              <div class="smear-row"><div class="smear on"></div><div class="smear on"></div><div class="smear on"></div><div class="smear"></div><div class="smear"></div></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="review-card reveal" data-category="fragrance">
+          <div class="swatch-smear" style="--smear-color:#6B5B73"></div>
+          <div class="card-body">
+            <span class="card-tag">Fragrance</span>
+            <span class="card-brand">Hush House</span>
+            <h3 class="card-title">Eau de Parfum — Cedar Bloom</h3>
+            <p class="card-verdict">Opens sharp and woody, settles into something warmer by hour two, and lasts a full workday without needing a top-up.</p>
+            <div class="card-foot">
+              <span>Repurchased: Yes</span>
+              <div class="smear-row"><div class="smear on"></div><div class="smear on"></div><div class="smear on"></div><div class="smear on"></div><div class="smear"></div></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="review-card reveal" data-category="makeup">
+          <div class="swatch-smear" style="--smear-color:#E3C29A"></div>
+          <div class="card-body">
+            <span class="card-tag">Makeup</span>
+            <span class="card-brand">Bare Canvas</span>
+            <h3 class="card-title">Second-Skin Foundation</h3>
+            <p class="card-verdict">Buildable without turning cakey, and it actually photographs well in flash — rare for a foundation at this price point.</p>
+            <div class="card-foot">
+              <span>Repurchased: Yes</span>
+              <div class="smear-row"><div class="smear on"></div><div class="smear on"></div><div class="smear on"></div><div class="smear on"></div><div class="smear"></div></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="review-card reveal" data-category="skincare">
+          <div class="swatch-smear" style="--smear-color:#D6A0A7"></div>
+          <div class="card-body">
+            <span class="card-tag">Skincare</span>
+            <span class="card-brand">Glow Lab</span>
+            <h3 class="card-title">Overnight Barrier Repair Balm</h3>
+            <p class="card-verdict">My ride-or-die for flight nights and breakout weeks. Angry, irritated skin wakes up calm by morning, every single time.</p>
+            <div class="card-foot">
+              <span>Repurchased: Yes</span>
+              <div class="smear-row"><div class="smear on"></div><div class="smear on"></div><div class="smear on"></div><div class="smear on"></div><div class="smear on"></div></div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="contact-section">
+    <div class="wrap">
+      <div class="contact reveal">
+        <div>
+          <p class="eyebrow">Get in touch</p>
+          <h2>Have a product worth testing?</h2>
+          <p>Press pitches are welcome — they'll just be marked "gifted," not "sponsored," and rated exactly like everything else.</p>
+        </div>
+        <form class="contact-form" id="contactForm">
+          <input type="text" name="name" placeholder="Your name" id="cf-name" required>
+          <input type="email" name="email" placeholder="Your email" id="cf-email" required>
+          <textarea name="message" placeholder="Tell me about the product or the pitch" id="cf-message" required></textarea>
+          <input type="hidden" name="_subject" value="New message from the website">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_autoresponse" value="Thanks so much for reaching out — this landed straight in Vaishnavi's inbox and she reads every message herself. She'll get back to you personally if it needs a reply.">
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+          <button type="submit" id="cfSubmitBtn">Send message</button>
+          <span class="form-note" id="cfNote">Delivered straight to Vaishnavi's inbox — nothing is stored anywhere else.</span>
+        </form>
+        <div class="contact-thanks" id="contactThanks" hidden>
+          <div class="thanks-mark">✓</div>
+          <h3>Message sent.</h3>
+          <p>It's in Vaishnavi's inbox now, and you should see a confirmation in your own email shortly. She reads everything herself.</p>
+          <button type="button" class="btn-ghost-inv" id="sendAnother">Send another message</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <span class="footer-copy">&copy; <span id="year"></span> Vaishnavi Acharya. All opinions are her own and unpaid for.</span>
+    <div class="footer-links">
+      <a href="#top">Back to top</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#contact-section">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Mobile nav toggle
+    var burger = document.getElementById('burger');
+    var navLinks = document.getElementById('navLinks');
+    burger.addEventListener('click', function(){
+      var isOpen = navLinks.classList.toggle('open');
+      burger.classList.toggle('open', isOpen);
+      burger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+    navLinks.querySelectorAll('a').forEach(function(link){
+      link.addEventListener('click', function(){
+        navLinks.classList.remove('open');
+        burger.classList.remove('open');
+        burger.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // Hero rotating word
+    var words = ['skincare', 'makeup', 'haircare', 'fragrance'];
+    var idx = 0;
+    var rotateEl = document.getElementById('rotateWord');
+    var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(!prefersReduced){
+      setInterval(function(){
+        idx = (idx + 1) % words.length;
+        rotateEl.style.opacity = 0;
+        setTimeout(function(){
+          rotateEl.textContent = words[idx];
+          rotateEl.style.opacity = 1;
+        }, 220);
+      }, 2400);
+      rotateEl.style.transition = 'opacity 0.22s ease';
+    }
+
+    // Category filter
+    var chips = document.querySelectorAll('#filterRow .chip');
+    var cards = document.querySelectorAll('#reviewGrid .review-card');
+    chips.forEach(function(chip){
+      chip.addEventListener('click', function(){
+        chips.forEach(function(c){ c.setAttribute('aria-pressed', 'false'); });
+        chip.setAttribute('aria-pressed', 'true');
+        var filter = chip.getAttribute('data-filter');
+        cards.forEach(function(card){
+          var match = filter === 'all' || card.getAttribute('data-category') === filter;
+          card.classList.toggle('hide', !match);
+        });
+      });
+    });
+
+    // Scroll reveal
+    var revealEls = document.querySelectorAll('.reveal');
+    if('IntersectionObserver' in window && !prefersReduced){
+      var observer = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if(entry.isIntersecting){
+            entry.target.classList.add('in');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      revealEls.forEach(function(el){ observer.observe(el); });
+    } else {
+      revealEls.forEach(function(el){ el.classList.add('in'); });
+    }
+
+    // Contact form -> delivered to vaish974093@gmail.com via FormSubmit
+    var form = document.getElementById('contactForm');
+    var submitBtn = document.getElementById('cfSubmitBtn');
+    var note = document.getElementById('cfNote');
+    var thanksPanel = document.getElementById('contactThanks');
+    var sendAnotherBtn = document.getElementById('sendAnother');
+    var CONTACT_EMAIL = 'vaish974093@gmail.com';
+
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+
+      // Honeypot: if this hidden field got filled, it's a bot — silently drop.
+      if(form.querySelector('[name="_honey"]').value){
+        form.reset();
+        return;
+      }
+
+      var originalLabel = submitBtn.textContent;
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending…';
+
+      var payload = new FormData(form);
+
+      fetch('https://formsubmit.co/ajax/' + CONTACT_EMAIL, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: payload
+      })
+      .then(function(res){ return res.ok ? res.json() : Promise.reject(res); })
+      .then(function(){
+        form.reset();
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalLabel;
+        form.hidden = true;
+        thanksPanel.hidden = false;
+        thanksPanel.focus && thanksPanel.setAttribute('tabindex', '-1');
+        thanksPanel.scrollIntoView({ behavior: prefersReduced ? 'auto' : 'smooth', block: 'center' });
+      })
+      .catch(function(){
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalLabel;
+        note.textContent = "Something went wrong sending that — please try again in a moment.";
+      });
+    });
+
+    sendAnotherBtn.addEventListener('click', function(){
+      thanksPanel.hidden = true;
+      form.hidden = false;
+      note.textContent = "Delivered straight to Vaishnavi's inbox — nothing is stored anywhere else.";
+    });
+  })();
+</script>
+
+</body>
+</html>
